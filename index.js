@@ -37,4 +37,20 @@ function mainPrompts(){
         }
     })
 }
+
+function viewAllEmployees(){
+    db.query(`SELECT * FROM employee LEFT JOIN role ON employee.role_id=role.id`,(err, res)=>{
+        if(err) throw err
+        console.table(res)
+        mainPrompts()
+    })
+}
+function viewAllDepartments(){
+    db.query(`SELECT * FROM department`,(err,res)=>{
+        if(err) throw err
+        console.table(res)
+        mainPrompts()
+    })
+}
+
 mainPrompts()
